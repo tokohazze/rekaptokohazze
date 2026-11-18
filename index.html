@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Toko Hazze</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/draft.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="js/dashboard.js" defer></script>
+  <script src="js/products.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="js/orders.js" defer></script>
+  <script src="js/rekap.js" defer></script>
+  <script src="js/kalender.js" defer></script>
+  <script src="js/supplier.js" defer></script>
+  <script src="js/laporan.js" defer></script>
+  <script src="js/garansi.js" defer></script>
+  <script src="js/testimoni.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <!-- Halaman login -->
+  <main id="login-view" hidden>
+    <section class="login-card">
+      <div class="brand-flower">✿ ❀ ✿</div>
+      <h1 class="brand-title">Toko Hazze</h1>
+      <p class="brand-sub">Your little space to manage every order.</p>
+
+      <form id="login-form" novalidate>
+        <label class="field">
+          <span>Email</span>
+          <input id="login-email" type="email" autocomplete="username" required />
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input id="login-password" type="password" autocomplete="current-password" required />
+        </label>
+        <button id="login-btn" class="btn btn-block" type="submit">Masuk</button>
+        <p id="login-error" class="error" role="alert"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Aplikasi (hanya tampil setelah login) -->
+  <div id="app-view" hidden>
+    <header class="topbar">
+      <div class="topbar-brand">✿ Toko Hazze</div>
+      <div class="topbar-right">
+        <button class="bell" id="btn-bell" type="button" title="Pengingat">🔔<span id="bell-count" class="bell-count" hidden>0</span></button>
+        <span id="admin-email" class="admin-email"></span>
+        <button class="btn btn-ghost" id="btn-products" type="button">Produk</button>
+        <button class="btn btn-ghost" data-logout type="button">Keluar</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <nav id="nav-desktop"></nav>
+      </aside>
+
+      <main class="main">
+        <div class="welcome page-head">
+          <h1>Welcome to Toko Hazze!</h1>
+          <p>Your little space to manage every order.</p>
+          <p id="today-date"></p>
+        </div>
+        <h2 id="page-title" class="page-head"></h2>
+        <div id="page-body"></div>
+      </main>
+    </div>
+
+    <nav id="nav-mobile" class="bottom-nav"></nav>
+  </div>
+
+</body>
+</html>

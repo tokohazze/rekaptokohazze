@@ -1,0 +1,251 @@
+/* Toko Hazze — Cute Floral Pastel (warna dari gaya "Ready Stock") */
+
+/* Font judul: Bigurls. Letakkan file Bigurls.ttf di folder fonts/.
+   Jika file belum ada, browser otomatis memakai font cadangan di bawahnya. */
+@font-face {
+  font-family: "Bigurls";
+  src: url("../fonts/Bigurls.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  /* Palet: pink #F7D1E8, mint #B1E5DB, lilac #D3CBF3, cokelat #68503F */
+  --pink: #f7d1e8;
+  --pink-deep: #68503f;
+  --blue: #b1e5db;
+  --blue-deep: #d3cbf3;
+  --butter: #d3cbf3;
+  --white: #fffdfb;
+  --cream: #fdf8f4;
+  --green: #b1e5db;
+  --green-deep: #5f9e90;
+  --text: #68503f;
+  --text-soft: rgba(104, 80, 63, 0.75);
+  --shadow: 0 4px 14px rgba(104, 80, 63, 0.14);
+  --radius: 20px;
+  --font-display: "Bigurls", "Nunito", sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+  --plum: #72246e;
+  --hot-pink: #ea3692;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--cream);
+  min-height: 100vh;
+}
+
+h1, h2, h3 { font-family: var(--font-body); margin: 0 0 8px; }
+/* Bigurls hanya untuk judul besar dan angka yang perlu ditonjolkan */
+#page-title, .brand-title, .topbar-brand, .welcome h1 { font-family: var(--font-display); }
+
+/* Tabel umum */
+table { font-family: var(--font-body); }
+
+/* ---------- Login ---------- */
+#login-view {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 10% 10%, var(--pink) 0 60px, transparent 61px),
+    radial-gradient(circle at 90% 85%, var(--blue) 0 80px, transparent 81px),
+    var(--cream);
+}
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--white);
+  border-radius: 28px;
+  padding: 32px 28px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  border: 2px dashed var(--pink);
+}
+.brand-flower { font-size: 34px; letter-spacing: 6px; color: var(--pink-deep); }
+.brand-title { font-size: 30px; color: var(--pink-deep); margin: 4px 0; }
+.brand-sub { color: var(--text-soft); margin: 0 0 22px; }
+
+.field { display: block; text-align: left; margin-bottom: 14px; }
+.field span { display: block; font-size: 14px; margin-bottom: 6px; font-weight: 700; }
+.field input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid var(--blue);
+  border-radius: 14px;
+  background: #fff;
+  font: inherit;
+  color: var(--text);
+}
+.field input:focus { outline: none; border-color: var(--pink-deep); }
+
+.btn {
+  font: inherit;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 20px;
+  cursor: pointer;
+  background: var(--pink);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition: transform 0.1s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:disabled { opacity: 0.6; cursor: wait; }
+.btn-block { width: 100%; }
+.btn-ghost { background: var(--white); }
+
+.error { color: #c0546f; min-height: 20px; font-size: 14px; margin: 10px 0 0; }
+
+/* ---------- App shell ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--white);
+  border-bottom: 2px dashed var(--pink);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.topbar-brand { font-family: var(--font-display); font-size: 22px; color: var(--pink-deep); }
+.topbar-right { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.admin-email { color: var(--text-soft); display: none; }
+.bell { font-size: 20px; }
+
+.layout { display: flex; min-height: calc(100vh - 60px); }
+
+/* Sidebar (desktop) */
+.sidebar {
+  width: 220px;
+  background: var(--blue);
+  padding: 20px 14px;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+}
+#nav-desktop { display: flex; flex-direction: column; gap: 6px; }
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 14px;
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+.nav-item.active { background: var(--white); box-shadow: var(--shadow); color: var(--pink-deep); }
+.nav-icon { font-size: 18px; }
+
+.main { flex: 1; padding: 20px 18px 110px; max-width: 1100px; width: 100%; margin: 0 auto; }
+
+/* Bottom navigation (mobile) */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-top: 2px dashed var(--pink);
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 6px 4px;
+  z-index: 10;
+}
+.bottom-nav .nav-item {
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 2px;
+  font-size: 11px;
+  text-align: center;
+  border-radius: 12px;
+}
+.bottom-nav .nav-label { font-size: 10px; }
+
+/* Cards & page */
+.page-head { margin-bottom: 16px; }
+.card {
+  background: linear-gradient(170deg, #ffffff 0%, #fffaf6 60%, #f8efe8 100%);
+  border-radius: 22px;
+  padding: 20px;
+  border: none;
+  position: relative;
+  box-shadow: 0 7px 0 rgba(104, 80, 63, 0.16), 0 16px 26px rgba(104, 80, 63, 0.16), inset 0 2px 0 #fff, inset 0 -3px 0 rgba(104, 80, 63, 0.06);
+  outline: 2px dashed var(--blue-deep);
+  outline-offset: -9px;
+}
+.placeholder { text-align: center; padding: 40px 20px; }
+.ornament { color: var(--pink-deep); letter-spacing: 8px; margin-bottom: 8px; }
+
+.welcome {
+  position: relative;
+  background: linear-gradient(120deg, #f7d1e8 0%, #e8d6f0 50%, #d3cbf3 100%);
+  color: #fff;
+  border-radius: 28px;
+  padding: 26px 24px 34px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 0 rgba(104, 80, 63, 0.14), 0 18px 28px rgba(104, 80, 63, 0.16), inset 0 2px 0 rgba(255, 255, 255, 0.6);
+  outline: 2px dashed rgba(255, 255, 255, 0.85);
+  outline-offset: -9px;
+}
+/* Tepi bergelombang di bagian bawah header */
+.welcome::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 12px;
+  background: radial-gradient(circle at 50% 100%, var(--cream) 11px, transparent 11.5px) 0 0 / 30px 12px repeat-x;
+}
+.welcome h1 { font-size: 28px; color: #fff; margin-bottom: 6px; text-shadow: 0 2px 6px rgba(104, 80, 63, 0.35); }
+.welcome p { color: #fff; margin: 0 0 4px; text-shadow: 0 1px 4px rgba(104, 80, 63, 0.35); }
+
+/* ---------- Responsive ---------- */
+@media (min-width: 900px) {
+  .sidebar { display: flex; }
+  .bottom-nav { display: none; }
+  .admin-email { display: inline; }
+  .main { padding-bottom: 30px; }
+}
+
+/* ---------- Tampilan HP (di bawah 900px) ---------- */
+@media (max-width: 899px) {
+  .topbar { padding: 10px 12px; }
+  .topbar-brand { font-size: 18px; white-space: nowrap; }
+  .topbar-right { gap: 6px; }
+  .topbar .btn { padding: 8px 12px; font-size: 13px; }
+  .main { padding: 14px 14px 116px; }
+  .card { padding: 16px; border-radius: 20px; }
+  .welcome { padding: 20px 18px 28px; border-radius: 22px; }
+  .welcome h1 { font-size: 22px; }
+  #page-title { font-size: 22px; }
+  .page-head { margin-bottom: 12px; }
+
+  /* Menu bawah: label tidak boleh pecah dua baris */
+  .bottom-nav { padding: 4px 2px; }
+  .bottom-nav .nav-item { min-width: 0; overflow: hidden; }
+  .bottom-nav .nav-icon { font-size: 18px; }
+  .bottom-nav .nav-label { display: block; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* Input minimal 16px supaya browser HP tidak memperbesar layar saat diketik */
+  input, select, textarea { font-size: 16px; }
+
+  .field input { padding: 12px; }
+  .btn-block { padding: 14px 20px; }
+}
